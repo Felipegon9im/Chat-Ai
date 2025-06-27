@@ -212,7 +212,9 @@
             } else if (type === 'video') {
                 const videoContainer = document.createElement('div');
                 videoContainer.className = `relative w-[200px] h-[356px] sm:w-[240px] sm:h-[426px] rounded-lg overflow-hidden shadow-lg z-10 ${sender === 'user' ? 'ml-auto' : 'mr-auto'}`;
-                videoContainer.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${content}?autoplay=1&controls=1&mute=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                // YouTube embed URL for shorts. Autoplay=1 and playsinline=1. Removed mute=1.
+                // NOTE: Autoplay with sound is almost always blocked by modern browsers until user interaction.
+                videoContainer.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${content}?autoplay=1&controls=1&playsinline=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 messageDiv.appendChild(videoContainer);
             }
 
@@ -367,4 +369,3 @@
     </script>
 </body>
 </html>
-
